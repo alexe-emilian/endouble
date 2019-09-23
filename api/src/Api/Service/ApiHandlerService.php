@@ -29,6 +29,10 @@ class ApiHandlerService
      */
     public function getParameters(Request $request): array
     {
+        if (Request::METHOD_GET === $request->getMethod()) {
+            return $request->query->all();
+        }
+
         return json_decode($request->getContent(), true);
     }
 

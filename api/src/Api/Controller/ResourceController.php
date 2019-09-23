@@ -58,7 +58,7 @@ class ResourceController extends AbstractController
     }
 
     /**
-     * @Route("",  methods={"POST"}, name="list")
+     * @Route("",  methods={"GET","POST"}, name="list")
      *
      * @param Request $request
      * @return Response

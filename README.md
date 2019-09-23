@@ -1,7 +1,11 @@
 ### PROJECT OVERVIEW
 - API Platform was used due to its many features that are already included in the framework and fit the project needs
-- The API has a single endpoint http://localhost:8000/api/resources that takes data through `POST` requests and returns the appropriate responses, as indicated in the assessment
+- The API has a single endpoint http://localhost:8000/api/resources that takes data through `GET` or `POST` requests and returns the appropriate responses
     - The class `ResourceController` in `api\src\Api\Controller\ResourceController.php` handles the requests and returns a `json` response
+- In a RESTful approach, for list a `GET` request should be used, however, since the payload indicated in the assignment was a `json` body I decided to handle both
+    - The method `getParameters` in `ApiHandlerService` handles the logic for parameter retrieval, allowing us to quickly remove a method from the route
+        - Remove the method that we do not wish to have on our endpoint from the controller method
+        - Change `getParameters` so that it offers support only for one set of data   
 - In case of an exception being thrown, an event subscriber has also been created so that the user always receives a proper `json` response
     - The class `ApiExceptionSubscriber` in `api\src\Api\EventListener\ApiExceptionSubscriber.php` handles the logic mentioned above
 - Unit tests have also been created for the classes found in the `Client`, `Handler`, and `Service` directories 
